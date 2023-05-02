@@ -1,5 +1,5 @@
 # ts-react-todo
 
-<iframe src="https://giphy.com/embed/DMP10DTUHx6A63ubq7" width="480" height="326" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/DMP10DTUHx6A63ubq7">via GIPHY</a></p>
+![Alt Text](https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExMzJjOGRhNmM0MjM0YTQ1NGZkOGVjYzgyZGQxZWI4ZDVjNzU1ODA5NCZlcD12MV9pbnRlcm5hbF9naWZzX2dpZklkJmN0PWc/DMP10DTUHx6A63ubq7/giphy.gif)
 
-Simple Toodo List built with React, TypeScript with Vite
+Simple Toodo List built with <strong>React, TypeScript with Vite</strong>
