@@ -8,7 +8,7 @@ interface TodoItemProps {
 	completeTodo(todoToDelete: string): void;
 }
 
-const TodoItem = ({ todo, completeTodo }: TodoItemProps) => {
+const TodoItem = ({ todo, completeTodo }: TodoItemProps): JSX.Element => {
 	return (
 		<TodoItemContainer>
 			<TodoContent>{todo.todoValue}</TodoContent>

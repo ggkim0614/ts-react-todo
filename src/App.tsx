@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { Todo } from './Interfaces';
 import TodoItem from './TodoItem';
 import Button from './Components/Button';
+import TextInput from './Components/TextInput';
 
 const App: React.FC = () => {
 	const [todos, setTodos] = useState<Todo[]>([]);
@@ -31,12 +32,13 @@ const App: React.FC = () => {
 		<Wrapper>
 			<CenterDiv>
 				<InputContainer>
-					<TodoInput
-						type="text"
+					<TextInput
+						inputValue={inputValue}
 						placeholder="Add todo"
-						value={inputValue}
 						onChange={handleChange}
+						fullWidth={true}
 					/>
+
 					<Button
 						buttonType="primary"
 						onClick={handleAddClick}
@@ -82,22 +84,6 @@ const CenterDiv = styled.div`
 const InputContainer = styled.div`
 	display: flex;
 	align-items: center;
-`;
-
-const TodoInput = styled.input`
-	height: 30px;
-	width: 240px;
-	border-radius: 8px;
-	border: 3px solid #e6e6e6;
-
-	&:focus {
-		outline: 3px solid #387ff2;
-	}
-
-	&::placeholder {
-		opacity: 0.3;
-		padding-left: 6px;
-	}
 `;
 
 const TodoBody = styled.div`

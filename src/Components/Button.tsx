@@ -7,7 +7,11 @@ type ButtonProps = {
 	onClick?: () => void;
 };
 
-const Button = ({ buttonText, buttonType, onClick }: ButtonProps) => {
+const Button = ({
+	buttonText,
+	buttonType,
+	onClick,
+}: ButtonProps): JSX.Element => {
 	return (
 		<ButtonContainer
 			onClick={onClick ? onClick : undefined}
