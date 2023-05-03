@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Todo } from './Interfaces';
+import Button from './Components/Button';
 
 interface TodoItemProps {
 	todo: Todo;
@@ -11,9 +12,11 @@ const TodoItem = ({ todo, completeTodo }: TodoItemProps) => {
 	return (
 		<TodoItemContainer>
 			<TodoContent>{todo.todoValue}</TodoContent>
-			<DeleteButton onClick={() => completeTodo(todo.todoValue)}>
-				Delete
-			</DeleteButton>
+			<Button
+				buttonType="delete"
+				buttonText="Delete"
+				onClick={() => completeTodo(todo.todoValue)}
+			/>
 		</TodoItemContainer>
 	);
 };
@@ -32,21 +35,4 @@ const TodoItemContainer = styled.div`
 
 const TodoContent = styled.div`
 	font-size: 20px;
-`;
-
-const DeleteButton = styled.button`
-	padding: 8px 12px;
-	font-size: 14px;
-	font-weight: 600;
-	color: #fff;
-	background-color: #9c9c9c;
-	border-radius: 8px;
-	outline: 0;
-	border: 0;
-	transition: 0.3s;
-	cursor: pointer;
-
-	&:hover {
-		background-color: #d13d64;
-	}
 `;

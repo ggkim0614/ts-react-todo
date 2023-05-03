@@ -2,6 +2,7 @@ import React, { ChangeEvent, useState } from 'react';
 import styled from 'styled-components';
 import { Todo } from './Interfaces';
 import TodoItem from './TodoItem';
+import Button from './Components/Button';
 
 const App: React.FC = () => {
 	const [todos, setTodos] = useState<Todo[]>([]);
@@ -12,6 +13,7 @@ const App: React.FC = () => {
 	};
 
 	const handleAddClick = () => {
+		console.log('running');
 		const newTodo = { todoValue: inputValue };
 		setTodos([...todos, newTodo]);
 		setInputValue('');
@@ -35,7 +37,11 @@ const App: React.FC = () => {
 						value={inputValue}
 						onChange={handleChange}
 					/>
-					<AddButton onClick={handleAddClick}>Add</AddButton>
+					<Button
+						buttonType="primary"
+						onClick={handleAddClick}
+						buttonText="Add todo"
+					/>
 				</InputContainer>
 			</CenterDiv>
 			<CenterDiv>
@@ -91,27 +97,6 @@ const TodoInput = styled.input`
 	&::placeholder {
 		opacity: 0.3;
 		padding-left: 6px;
-	}
-`;
-
-const AddButton = styled.button`
-	margin-left: 12px;
-	height: 36px;
-	padding: 0 24px;
-	color: #fff;
-	background-color: #387ff2;
-	font-size: 16px;
-	border-radius: 8px;
-	outline: 0;
-	border: 0;
-	transition: 0.3s;
-	cursor: pointer;
-
-	&:hover {
-		background-color: #1262e3;
-	}
-	&:active {
-		background-color: #0654d1;
 	}
 `;
 
