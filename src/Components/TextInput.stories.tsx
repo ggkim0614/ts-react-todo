@@ -1,5 +1,5 @@
 // Button.stories.ts|tsx
-import React, { ChangeEvent, useState } from 'react';
+import { ChangeEvent, useState } from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
 
 import TextInput from './TextInput';

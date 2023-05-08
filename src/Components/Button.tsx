@@ -1,9 +1,9 @@
-import React from 'react';
 import styled, { css } from 'styled-components';
+import { TbTrashXFilled } from 'react-icons/tb';
 
 type ButtonProps = {
-	buttonType: string;
-	buttonText: string;
+	buttonType: 'primary' | 'secondary' | 'delete';
+	buttonText?: string;
 	onClick?: () => void;
 };
 
@@ -17,7 +17,7 @@ const Button = ({
 			onClick={onClick ? onClick : undefined}
 			buttonType={buttonType}
 		>
-			{buttonText}
+			{buttonType === 'delete' ? <TbTrashXFilled size="18" /> : buttonText}
 		</ButtonContainer>
 	);
 };
@@ -36,7 +36,7 @@ const ButtonContainer = styled.button<{ buttonType: string }>`
 	${({ buttonType }) =>
 		buttonType === 'primary' &&
 		css`
-			padding: 12px 24px;
+			padding: 8px 16px;
 			color: #fff;
 			background-color: #387ff2;
 			border: 3px solid #387ff2;
@@ -66,7 +66,8 @@ const ButtonContainer = styled.button<{ buttonType: string }>`
 	${({ buttonType }) =>
 		buttonType === 'delete' &&
 		css`
-			padding: 12px 24px;
+			width: 40px;
+			height: 40px;
 			font-size: 14px;
 			color: #666666;
 			background-color: #d7d7d7;

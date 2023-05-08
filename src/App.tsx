@@ -1,4 +1,4 @@
-import React, { ChangeEvent, useState } from 'react';
+import { ChangeEvent, useState } from 'react';
 import styled from 'styled-components';
 import { Todo } from './Interfaces';
 import TodoItem from './TodoItem';
@@ -17,18 +17,31 @@ const App: React.FC = () => {
 	const uuid = uuidv4();
 
 	const handleAddClick = () => {
-		console.log('running');
-		const newTodo = { id: uuid, todoValue: inputValue };
+		if (inputValue === '') return;
+
+		const newTodo = { id: uuid, todoValue: inputValue, isComplete: false };
 		setTodos([...todos, newTodo]);
 		setInputValue('');
 	};
 
-	const deleteTodo = (todoToDelete: number) => {
+	const toggleTodo = (idToToggle: string) => {
 		setTodos(
-			todos.filter((todo) => {
-				return todo.id !== todoToDelete;
-			})
+			todos.map((todo) =>
+				todo.id === idToToggle
+					? { ...todo, isComplete: !todo.isComplete }
+					: todo
+			)
 		);
+	};
+
+	const deleteTodo = (idToDelete: string) => {
+		if (window.confirm('Do you really want to delete this item?')) {
+			setTodos(
+				todos.filter((todo) => {
+					return todo.id !== idToDelete;
+				})
+			);
+		}
 	};
 
 	return (
@@ -60,7 +73,12 @@ const App: React.FC = () => {
 						) : (
 							todos.map((todo: Todo, key: number) => {
 								return (
-									<TodoItem key={key} todo={todo} completeTodo={deleteTodo} />
+									<TodoItem
+										key={key}
+										todo={todo}
+										toggleTodo={toggleTodo}
+										deleteTodo={deleteTodo}
+									/>
 								);
 							})
 						)}
@@ -76,12 +94,13 @@ export default App;
 const Wrapper = styled.div`
 	font-family: 'HelveticaNeue-Light', 'Helvetica Neue Light', 'Helvetica Neue',
 		Helvetica, Arial, 'Lucida Grande', sans-serif;
-	margin: 64px;
+	margin: 32px;
 `;
 
 const CenterDiv = styled.div`
 	display: flex;
 	justify-content: center;
+	width: 100%;
 `;
 
 const InputContainer = styled.div`
@@ -91,9 +110,11 @@ const InputContainer = styled.div`
 
 const TodoBody = styled.div`
 	margin-top: 36px;
+	width: 50%;
 `;
 
 const Header = styled.div`
+	text-align: center;
 	font-size: 24px;
 	font-weight: 600;
 	span {
