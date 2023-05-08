@@ -5,7 +5,7 @@ import Button from './Components/Button';
 
 interface TodoItemProps {
 	todo: Todo;
-	completeTodo(todoToDelete: string): void;
+	completeTodo(idToDelete: number): void;
 }
 
 const TodoItem = ({ todo, completeTodo }: TodoItemProps): JSX.Element => {
@@ -15,7 +15,7 @@ const TodoItem = ({ todo, completeTodo }: TodoItemProps): JSX.Element => {
 			<Button
 				buttonType="delete"
 				buttonText="Delete"
-				onClick={() => completeTodo(todo.todoValue)}
+				onClick={() => completeTodo(todo.id)}
 			/>
 		</TodoItemContainer>
 	);

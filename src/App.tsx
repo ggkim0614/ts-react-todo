@@ -4,6 +4,7 @@ import { Todo } from './Interfaces';
 import TodoItem from './TodoItem';
 import Button from './Components/Button';
 import TextInput from './Components/TextInput';
+import { v4 as uuidv4 } from 'uuid';
 
 const App: React.FC = () => {
 	const [todos, setTodos] = useState<Todo[]>([]);
@@ -13,17 +14,19 @@ const App: React.FC = () => {
 		setInputValue(event.target.value);
 	};
 
+	const uuid = uuidv4();
+
 	const handleAddClick = () => {
 		console.log('running');
-		const newTodo = { todoValue: inputValue };
+		const newTodo = { id: uuid, todoValue: inputValue };
 		setTodos([...todos, newTodo]);
 		setInputValue('');
 	};
 
-	const deleteTodo = (todoToDelete: string) => {
+	const deleteTodo = (todoToDelete: number) => {
 		setTodos(
 			todos.filter((todo) => {
-				return todo.todoValue !== todoToDelete;
+				return todo.id !== todoToDelete;
 			})
 		);
 	};
