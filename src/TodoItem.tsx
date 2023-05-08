@@ -42,7 +42,7 @@ const TodoItemContainer = styled.div<{ isComplete: boolean }>`
 	justify-content: space-between;
 	border: 3px solid #e8e8e8;
 	border-radius: 15px;
-	margin-bottom: 12px;
+	margin-top: 12px;
 
 	${({ isComplete }) =>
 		isComplete === true &&
@@ -61,7 +61,7 @@ const Tooltip = styled.span`
 	color: #fff;
 	border-radius: 8px;
 	z-index: 10;
-	left: -200px;
+	left: -185px;
 	bottom: 10px;
 	transform: scale(0);
 	transition: 0.15s;
