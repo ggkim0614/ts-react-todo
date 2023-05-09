@@ -17,3 +17,5 @@ Simple Todo List built with <strong>React, TypeScript with Vite + Storybook</str
 
 ![Alt Text](https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExNmQxM2VmOWI0ZTQ1YzMxMGEzNjdiYjg2NDY3Yzk3ZTQ5ZmUzYTE0YSZlcD12MV9pbnRlcm5hbF9naWZzX2dpZklkJmN0PWc/ijob5xfcrJfsSCiMzr/giphy.gif)
 
++ Implemented Context API for the CRUD features in the todo list = 5/9/23
+
