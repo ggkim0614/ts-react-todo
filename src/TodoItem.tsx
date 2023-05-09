@@ -1,26 +1,40 @@
 import styled, { css } from 'styled-components';
 import { Todo } from './Interfaces';
 import Button from './Components/Button';
+import { useDispatchContext } from './Context/ContextProvider';
 
 interface TodoItemProps {
 	todo: Todo;
-	deleteTodo(idToDelete: string): void;
-	toggleTodoCompletion(idToToggle: string): void;
 }
 
-const TodoItem = ({
-	todo,
-	deleteTodo,
-	toggleTodoCompletion,
-}: TodoItemProps) => {
-	const handleClick = (idToToggle: string) => {
+const TodoItem = ({ todo }: TodoItemProps) => {
+	const dispatch = useDispatchContext();
+
+	const toggleTodoCompletion = (idToToggle: string) => {
+		dispatch({
+			type: 'TOGGLE',
+			id: idToToggle,
+		});
+	};
+
+	const deleteTodo = (idToDelete: string) => {
+		if (window.confirm('Do you really want to delete this item?')) {
+			dispatch({
+				type: 'DELETE',
+				id: idToDelete,
+			});
+		}
+	};
+
+	const handleToggleCompletion = (idToToggle: string) => {
 		toggleTodoCompletion(idToToggle);
 	};
+
 	return (
 		<TodoItemContainer isComplete={todo.isComplete}>
 			<TodoContent
 				isComplete={todo.isComplete}
-				onClick={() => handleClick(todo.id)}
+				onClick={() => handleToggleCompletion(todo.id)}
 			>
 				{todo.todoValue}
 				<Tooltip>Click to mark complete &nbsp;✅</Tooltip>

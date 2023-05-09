@@ -4,6 +4,7 @@ import TodoItem from './TodoItem';
 import { RiReactjsLine } from 'react-icons/ri';
 import { SiTypescript } from 'react-icons/si';
 import { Todo } from './Interfaces';
+import { useTodoStateContext } from './Context/ContextProvider';
 
 type ChipState = {
 	incompleteItems: false;
@@ -11,24 +12,16 @@ type ChipState = {
 };
 
 type TodoBodyProps = {
-	todos: Todo[];
 	chipState: { incompleteItems: boolean; completeItems: boolean };
 	handleChipToggle: (
 		itemToToggle: keyof ChipState,
 		itemToMakeFalse: keyof ChipState
 	) => void;
-
-	toggleTodoCompletion: (idToToggle: string) => void;
-	deleteTodo: (idToDelete: string) => void;
 };
 
-const TodoBody = ({
-	todos,
-	chipState,
-	handleChipToggle,
-	toggleTodoCompletion,
-	deleteTodo,
-}: TodoBodyProps) => {
+const TodoBody = ({ chipState, handleChipToggle }: TodoBodyProps) => {
+	const todos: Todo[] = useTodoStateContext();
+
 	const completedTodos = todos.filter((todo) => todo.isComplete === true);
 
 	const incompleteTodos = todos.filter((todo) => todo.isComplete !== true);
@@ -71,37 +64,16 @@ const TodoBody = ({
 				{todos.length === 0 && <AddTodoMsg>Add todos</AddTodoMsg>}
 				{chipState.incompleteItems &&
 					incompleteTodos.map((todo: Todo, key: number) => {
-						return (
-							<TodoItem
-								key={key}
-								todo={todo}
-								toggleTodoCompletion={toggleTodoCompletion}
-								deleteTodo={deleteTodo}
-							/>
-						);
+						return <TodoItem key={key} todo={todo} />;
 					})}
 				{chipState.completeItems &&
 					completedTodos.map((todo: Todo, key: number) => {
-						return (
-							<TodoItem
-								key={key}
-								todo={todo}
-								toggleTodoCompletion={toggleTodoCompletion}
-								deleteTodo={deleteTodo}
-							/>
-						);
+						return <TodoItem key={key} todo={todo} />;
 					})}
 				{chipState.incompleteItems === false &&
 					chipState.completeItems === false &&
 					todos.map((todo: Todo, key: number) => {
-						return (
-							<TodoItem
-								key={key}
-								todo={todo}
-								toggleTodoCompletion={toggleTodoCompletion}
-								deleteTodo={deleteTodo}
-							/>
-						);
+						return <TodoItem key={key} todo={todo} />;
 					})}
 			</TodoSection>
 		</TodoBodyContainer>

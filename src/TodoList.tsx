@@ -1,9 +1,9 @@
 import { ChangeEvent, useState } from 'react';
 import styled from 'styled-components';
-import { Todo } from './Interfaces';
 import Button from './Components/Button';
 import TextInput from './Components/TextInput';
 import TodoBody from './TodoBody';
+import { useDispatchContext } from './Context/ContextProvider';
 import { v4 as uuidv4 } from 'uuid';
 
 type ChipState = {
@@ -12,45 +12,28 @@ type ChipState = {
 };
 
 const TodoList = () => {
-	const [todos, setTodos] = useState<Todo[]>([]);
 	const [inputValue, setInputValue] = useState<string>('');
 	const [chipState, setChipState] = useState<ChipState>({
 		incompleteItems: false,
 		completeItems: false,
 	});
 
+	const dispatch = useDispatchContext();
+
 	const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
 		setInputValue(event.target.value);
 	};
 
-	const uuid = uuidv4();
-
 	const handleAddClick = () => {
 		if (inputValue === '') return;
 
-		const newTodo = { id: uuid, todoValue: inputValue, isComplete: false };
-		setTodos([...todos, newTodo]);
+		const uuid = uuidv4();
+		dispatch({
+			id: uuid,
+			type: 'CREATE',
+			textValue: inputValue,
+		});
 		setInputValue('');
-	};
-
-	const toggleTodoCompletion = (idToToggle: string) => {
-		setTodos(
-			todos.map((todo) =>
-				todo.id === idToToggle
-					? { ...todo, isComplete: !todo.isComplete }
-					: todo
-			)
-		);
-	};
-
-	const deleteTodo = (idToDelete: string) => {
-		if (window.confirm('Do you really want to delete this item?')) {
-			setTodos(
-				todos.filter((todo) => {
-					return todo.id !== idToDelete;
-				})
-			);
-		}
 	};
 
 	const handleChipToggle = (
@@ -83,13 +66,7 @@ const TodoList = () => {
 				</InputContainer>
 			</CenterDiv>
 			<CenterDiv>
-				<TodoBody
-					todos={todos}
-					chipState={chipState}
-					handleChipToggle={handleChipToggle}
-					toggleTodoCompletion={toggleTodoCompletion}
-					deleteTodo={deleteTodo}
-				/>
+				<TodoBody chipState={chipState} handleChipToggle={handleChipToggle} />
 			</CenterDiv>
 		</Wrapper>
 	);
