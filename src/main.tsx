@@ -1,6 +1,6 @@
 import ReactDOM from 'react-dom/client';
-import App from './App.tsx';
+import TodoList from './TodoList.tsx';
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
-	<App />
+	<TodoList />
 );

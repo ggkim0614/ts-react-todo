@@ -3,14 +3,14 @@ import styled, { css } from 'styled-components';
 type ChipProps = {
 	label: string;
 	value: boolean;
-	handleToggle?: () => void;
+	handleChipToggle?: () => void;
 };
 
-const Chip = ({ label, value, handleToggle }: ChipProps) => {
+const Chip = ({ label, value, handleChipToggle }: ChipProps) => {
 	return (
 		<ChipContainer
 			isActive={value}
-			onClick={handleToggle ? handleToggle : undefined}
+			onClick={handleChipToggle ? handleChipToggle : undefined}
 		>
 			{label}
 		</ChipContainer>

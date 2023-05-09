@@ -5,16 +5,16 @@ import Button from './Components/Button';
 interface TodoItemProps {
 	todo: Todo;
 	deleteTodo(idToDelete: string): void;
-	toggleTodo(idToToggle: string): void;
+	toggleTodoCompletion(idToToggle: string): void;
 }
 
 const TodoItem = ({
 	todo,
 	deleteTodo,
-	toggleTodo,
-}: TodoItemProps): JSX.Element => {
+	toggleTodoCompletion,
+}: TodoItemProps) => {
 	const handleClick = (idToToggle: string) => {
-		toggleTodo(idToToggle);
+		toggleTodoCompletion(idToToggle);
 	};
 	return (
 		<TodoItemContainer isComplete={todo.isComplete}>
