@@ -2,9 +2,16 @@
 
 ![Alt Text](https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExYTU5ZTIwOGY3MmY3NzY1ZDhiZjY3MWJmMGM1NzAwMWY4YmNjNTBmNiZlcD12MV9pbnRlcm5hbF9naWZzX2dpZklkJmN0PWc/f7vpHevFrYkIZ7UpHQ/giphy.gif)
 
-Simple Todo List built with <strong>React, TypeScript with Vite + Storybook</strong>
+### 🧸 sandbox/toy repository where I'm testing and exploring the stacks
+
+Simple Todo List built with <strong>React & TypeScript</strong>
 
 <hr />
+
+Stacks/technologies used: 
+- Language: Typescript(React)
+- Libraries/hooks: Styled components, Storybook, React icons, uuid, Context API, useReducer, etc
+- Build tool: Vite
 
 ![Alt Text](https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExMzJjOGRhNmM0MjM0YTQ1NGZkOGVjYzgyZGQxZWI4ZDVjNzU1ODA5NCZlcD12MV9pbnRlcm5hbF9naWZzX2dpZklkJmN0PWc/DMP10DTUHx6A63ubq7/giphy.gif)
 
