@@ -9,6 +9,7 @@ type Todo = {
 type Actions =
 	| { type: 'CREATE'; id: string; textValue: string }
 	| { type: 'TOGGLE'; id: string }
+	| { type: 'UPDATE'; id: string; newValue: string }
 	| { type: 'DELETE'; id: string };
 
 const initialState: Todo[] = [];
@@ -26,6 +27,10 @@ const Reducer = (state: Todo[], action: Actions): Todo[] => {
 		case 'TOGGLE':
 			return state.map((todo) =>
 				action.id === todo.id ? { ...todo, isComplete: !todo.isComplete } : todo
+			);
+		case 'UPDATE':
+			return state.map((todo) =>
+				action.id === todo.id ? { ...todo, todoValue: action.newValue } : todo
 			);
 		case 'DELETE':
 			return state.filter((todo) => todo.id !== action.id);

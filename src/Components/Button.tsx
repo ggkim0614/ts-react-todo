@@ -51,7 +51,7 @@ const ButtonContainer = styled.button<{ buttonType: string }>`
 	${({ buttonType }) =>
 		buttonType === 'secondary' &&
 		css`
-			padding: 12px 24px;
+			padding: 8px 16px;
 			color: #333333;
 			border: 3px solid #e9e9e9;
 			background-color: #ffffff;

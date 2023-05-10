@@ -1,13 +1,18 @@
+import { ChangeEvent, useState } from 'react';
 import styled, { css } from 'styled-components';
 import { Todo } from './Interfaces';
 import Button from './Components/Button';
 import { useDispatchContext } from './Context/ContextProvider';
+import TextInput from './Components/TextInput';
 
 interface TodoItemProps {
 	todo: Todo;
 }
 
 const TodoItem = ({ todo }: TodoItemProps) => {
+	const [editingMode, setEditingMode] = useState<boolean>(false);
+	const [editInputValue, setEditInputValue] = useState<string>(todo.todoValue);
+
 	const dispatch = useDispatchContext();
 
 	const toggleTodoCompletion = (idToToggle: string) => {
@@ -30,17 +35,48 @@ const TodoItem = ({ todo }: TodoItemProps) => {
 		toggleTodoCompletion(idToToggle);
 	};
 
+	const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
+		setEditInputValue(event.target.value);
+	};
+
+	const handleEdit = (idToUpdate: string) => {
+		dispatch({
+			type: 'UPDATE',
+			id: idToUpdate,
+			newValue: editInputValue,
+		});
+		setEditingMode(!editingMode);
+	};
+
 	return (
 		<TodoItemContainer isComplete={todo.isComplete}>
-			<TodoContent
-				isComplete={todo.isComplete}
-				onClick={() => handleToggleCompletion(todo.id)}
-			>
-				{todo.todoValue}
-				<Tooltip>Click to mark complete &nbsp;✅</Tooltip>
-			</TodoContent>
-
-			<Button buttonType="delete" onClick={() => deleteTodo(todo.id)} />
+			{editingMode ? (
+				<TextInput
+					inputValue={editInputValue}
+					onChange={handleChange}
+					fullWidth={true}
+				/>
+			) : (
+				<TodoContent
+					isComplete={todo.isComplete}
+					onClick={() => handleToggleCompletion(todo.id)}
+				>
+					{todo.todoValue}
+					<Tooltip>Click to mark complete &nbsp;✅</Tooltip>
+				</TodoContent>
+			)}
+			<span>
+				<Button
+					buttonText={editingMode ? 'Finish' : 'Edit'}
+					buttonType={editingMode ? 'primary' : 'secondary'}
+					onClick={
+						editingMode
+							? () => handleEdit(todo.id)
+							: () => setEditingMode(!editingMode)
+					}
+				/>
+				<Button buttonType="delete" onClick={() => deleteTodo(todo.id)} />
+			</span>
 		</TodoItemContainer>
 	);
 };
