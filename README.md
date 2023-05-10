@@ -22,8 +22,7 @@ Simple Todo List built with <strong>React, TypeScript with Vite + Storybook</str
 ![Alt Text](https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExNmQxM2VmOWI0ZTQ1YzMxMGEzNjdiYjg2NDY3Yzk3ZTQ5ZmUzYTE0YSZlcD12MV9pbnRlcm5hbF9naWZzX2dpZklkJmN0PWc/ijob5xfcrJfsSCiMzr/giphy.gif)
 
 + Implemented Context API for the CRUD features in the todo list - 5/9/23
-
-<img src="https://user-images.githubusercontent.com/37966668/236989927-825baa1d-2109-4d3a-b439-74d542e7b1a5.png" width="120px" height="100px">
+<img src="https://user-images.githubusercontent.com/37966668/236989927-825baa1d-2109-4d3a-b439-74d542e7b1a5.png" width="120" height="120">
 
 + Added editing feature - 5/10/23
 
