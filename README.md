@@ -1,10 +1,12 @@
 # ts-react-todo
 
-![Alt Text](https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExMzJjOGRhNmM0MjM0YTQ1NGZkOGVjYzgyZGQxZWI4ZDVjNzU1ODA5NCZlcD12MV9pbnRlcm5hbF9naWZzX2dpZklkJmN0PWc/DMP10DTUHx6A63ubq7/giphy.gif)
+![Alt Text](https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExYTU5ZTIwOGY3MmY3NzY1ZDhiZjY3MWJmMGM1NzAwMWY4YmNjNTBmNiZlcD12MV9pbnRlcm5hbF9naWZzX2dpZklkJmN0PWc/f7vpHevFrYkIZ7UpHQ/giphy.gif)
 
 Simple Todo List built with <strong>React, TypeScript with Vite + Storybook</strong>
 
-+ Added Storybook added - 5/3/23
+![Alt Text](https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExMzJjOGRhNmM0MjM0YTQ1NGZkOGVjYzgyZGQxZWI4ZDVjNzU1ODA5NCZlcD12MV9pbnRlcm5hbF9naWZzX2dpZklkJmN0PWc/DMP10DTUHx6A63ubq7/giphy.gif)
+
++ Added Storybook - 5/3/23
 
 ![Alt Text](https://media.giphy.com/media/VCuYPp7Nsn8cbKC7MC/giphy.gif)
 
