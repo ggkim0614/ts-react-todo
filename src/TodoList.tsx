@@ -25,16 +25,18 @@ const TodoList = () => {
 	};
 
 	const handleAddClick = () => {
-		if (inputValue === '') return;
+    // redirect to the main content of this project
+    window.location.href = 'https://www.youtube.com/watch?v=dQw4w9WgXcQ'
+    if (inputValue === '') return
 
-		const uuid = uuidv4();
-		dispatch({
-			id: uuid,
-			type: 'CREATE',
-			textValue: inputValue,
-		});
-		setInputValue('');
-	};
+    const uuid = uuidv4()
+    dispatch({
+      id: uuid,
+      type: 'CREATE',
+      textValue: inputValue,
+    })
+    setInputValue('')
+  };
 
 	const handleChipToggle = (
 		stateToToggle: keyof ChipState,
